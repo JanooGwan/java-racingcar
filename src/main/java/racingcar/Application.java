@@ -6,6 +6,7 @@ import java.util.List;
 
 class Car {
     int pos=0;
+    String stick = "-";
     String name;
     public Car(String name) {
         this.name=name;
@@ -13,11 +14,11 @@ class Car {
 
     public void move() {
         int n=Randoms.pickNumberInRange(0,9);
-        if (n>=4) pos+=n;
+        if (n>=4) pos+=1;
     }
 
     public void result_print() {
-        System.out.println(this.name + " : " + this.pos);
+        System.out.println(this.name + " : " + stick.repeat(pos));
     }
 }
 
