@@ -3,7 +3,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 class Car {
     int pos=0;
@@ -23,17 +22,15 @@ class Car {
 }
 
 public class Application {
-    public void judge_winner() {
-
-    }
-    public void print_result() {
-
-    }
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.");
         System.out.println("이름은 쉼표(,) 기준으로 구분");
 
         String str = Console.readLine();
+
+        if(!str.contains(",") || str.contains(",,"))
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+
         String[] arr = str.split(",");
         Car[] cars = new Car[1000];
 
@@ -42,6 +39,12 @@ public class Application {
 
         System.out.println("몇 회 시도하실 건가요?");
         String p = Console.readLine();
+        String pp = p.replaceAll("[\\d]", "");
+        System.out.println(pp);
+
+        if(!pp.isBlank())
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+
         int n = Integer.parseInt(p);
 
         while (n>0)
