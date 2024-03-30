@@ -22,16 +22,35 @@ class Car {
 }
 
 public class Application {
+    public static void moving_car(Car[] car, int n) {
+        for (int i = 0; i < n; i++) {
+            car[i].move();
+            car[i].result_print();
+        }
+    }
+
+    public static boolean checking_length(String[] str) {
+        boolean stat=true;
+        for (String s : str) {
+            if (s.length() > 5) stat = false;
+        }
+
+        return stat;
+    }
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.");
-        System.out.println("이름은 쉼표(,) 기준으로 구분");
+        System.out.println("이름은 쉼표(,) 기준으로 구분, 5자 이하 입력");
 
         String str = Console.readLine();
 
-        if(!str.contains(",") || str.contains(",,"))
-            throw new IllegalArgumentException("잘못된 입력입니다.");
+        if(str.contains(",,"))
+            throw new IllegalArgumentException("잘못된 입력 : 쉼표가 연속으로 있음");
 
         String[] arr = str.split(",");
+
+        if(!checking_length(arr))
+            throw new IllegalArgumentException("잘못된 입력 : 이름이 5자를 초과하였음");
+
         Car[] cars = new Car[1000];
 
         for(int i=0; i<arr.length; i++)
@@ -43,16 +62,13 @@ public class Application {
         System.out.println(pp);
 
         if(!pp.isBlank())
-            throw new IllegalArgumentException("잘못된 입력입니다.");
+            throw new IllegalArgumentException("잘못된 입력 : 숫자만 입력되어야 함");
 
         int n = Integer.parseInt(p);
 
         while (n>0)
         {
-            for (int j = 0; j < arr.length; j++) {
-                cars[j].move();
-                cars[j].result_print();
-            }
+            moving_car(cars, arr.length);
             System.out.print('\n');
             n--;
         }
