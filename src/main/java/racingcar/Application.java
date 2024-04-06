@@ -30,6 +30,10 @@ public class Application {
         }
     }
 
+    class Checking_Exception() {
+
+    }
+
     public static boolean checking_length(String[] str) { // 이름 길이 체크, 예외 처리 시 사용
         boolean stat=true;
         for (String s : str) {
