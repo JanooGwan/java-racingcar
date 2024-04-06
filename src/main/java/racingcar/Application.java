@@ -52,7 +52,7 @@ public class Application {
         if(!checking_length(arr))
             throw new IllegalArgumentException("잘못된 입력 : 이름이 5자를 초과하였음");
 
-        Car[] cars = new Car[1000];
+        Car[] cars = new Car[arr.length];
 
         for(int i=0; i<arr.length; i++) // 생성된 이름 개수만큼 객체 생성
             cars[i]=new Car(arr[i]);
