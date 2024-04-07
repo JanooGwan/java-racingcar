@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-class Car {
+static class Car {
     int pos=0; // 차 위치
     String stick = "-";
     String name;
@@ -31,7 +31,6 @@ public class Application {
     }
 }
 
-<<<<<<< HEAD
 static class Exceptions {
     public String stat;
     public String checked_str;
@@ -41,42 +40,18 @@ static class Exceptions {
         this.checked_str=str;
     }
 
-    public Exceptions(String[] str) {
-        this.checked_strs=str;
-    }
 
 
 
     public void length() { // 이름 길이 체크, 예외 처리 시 사용
         String[] arr = checked_str.split(",");
         for (String s : arr) {
-=======
-class Exceptions {
-    public Exceptions(String str) {
-        this.checking_str=str;
-    }
-
-    public Exceptions(String[] str) {
-        this.checking_strs=str;
-    }
-    public String stat;
-    public String checking_str;
-    public String[] checking_strs;
-
-    public void length() { // 이름 길이 체크, 예외 처리 시 사용
-
-        for (String s : this.checking_strs) {
->>>>>>> 983fa1c0754a5ceefbd6cc7fe4e6606093e47920
             if (s.length() > 5) this.stat = "length";
         }
     }
 
     public void comma() {
-<<<<<<< HEAD
         if (this.checked_str.contains(",,"))
-=======
-        if (this.checking_str.contains(",,"))
->>>>>>> 983fa1c0754a5ceefbd6cc7fe4e6606093e47920
             this.stat = "comma";
     }
 
@@ -111,7 +86,6 @@ class Exceptions {
 
         String str = Console.readLine();
 
-<<<<<<< HEAD
         Exceptions exceptions = new Exceptions(str);
 
         exceptions.comma();
@@ -120,23 +94,19 @@ class Exceptions {
         exceptions.Throw();
 
         String[] arr = str.split(",");
-=======
-        Exceptions exceptions = new Exceptions;
->>>>>>> 983fa1c0754a5ceefbd6cc7fe4e6606093e47920
 
         Car[] cars = new Car[arr.length];
         for(int i=0; i<arr.length; i++) // 생성된 이름 개수만큼 객체 생성
             cars[i]=new Car(arr[i]);
 
         System.out.println("몇 회 시도하실 건가요?");
-        String p = Console.readLine();
-        String pp = p.replaceAll("[\\d]", ""); // 숫자를 제외한 모든 문자 제거
-        System.out.println(pp);
+        str = Console.readLine();
+        String num_str = str.replaceAll("[\\d]", ""); // 숫자를 제외한 모든 문자 제거
 
-        if(!pp.isBlank())
+        if(!num_str.isBlank())
             throw new IllegalArgumentException("잘못된 입력 : 숫자만 입력되어야 함");
 
-        int n = Integer.parseInt(p);
+        int n = Integer.parseInt(str);
 
         while (n>0)
         {
