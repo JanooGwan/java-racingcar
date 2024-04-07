@@ -29,32 +29,50 @@ public class Application {
             car[i].result_print();
         }
     }
+}
 
-    class Checking_Exception() {
+class Exceptions {
+    public String stat;
+    public String checking_str;
+    public String[] checking_strs;
 
+    public void get_str(String str) {
+        this.checking_str=str;
     }
 
-    public static boolean checking_length(String[] str) { // 이름 길이 체크, 예외 처리 시 사용
-        boolean stat=true;
-        for (String s : str) {
-            if (s.length() > 5) stat = false;
+    public void get_str(String[] str) {
+        this.checking_strs=str;
+    }
+
+
+    public void length() { // 이름 길이 체크, 예외 처리 시 사용
+
+        for (String s : this.checking_strs) {
+            if (s.length() > 5) this.stat = "length";
         }
-
-        return stat;
     }
+
+    public void comma() {
+        if (this.checking_str.contains(",,"))
+            this.stat = "comma";
+    }
+
+    public void only_num(String str) {
+        String str_filter = str.replaceAll("[\\d]", ""); // 숫자를 제외한 모든 문자 제거
+
+        if(!str_filter.isBlank())
+            this.stat = "num";
+    }
+
+}
+
+
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.");
         System.out.println("이름은 쉼표(,) 기준으로 구분, 5자 이하 입력");
 
         String str = Console.readLine();
 
-        if(str.contains(",,"))
-            throw new IllegalArgumentException("잘못된 입력 : 쉼표가 연속으로 있음");
-
-        String[] arr = str.split(",");
-
-        if(!checking_length(arr))
-            throw new IllegalArgumentException("잘못된 입력 : 이름이 5자를 초과하였음");
 
         Car[] cars = new Car[arr.length];
 
