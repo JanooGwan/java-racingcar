@@ -95,6 +95,16 @@ class Exceptions {
     }
 
     public void Throw() {
+        if (stat=="comma")
+            throw new IllegalArgumentException("잘못된 입력 : 쉼표가 연속으로 있음");
+
+        else if(stat=="length")
+            throw new IllegalArgumentException("잘못된 입력 : 이름이 5자를 초과하였음");
+
+        else if(stat=="num")
+            throw new IllegalArgumentException("잘못된 입력 : 숫자만 입력되어야 함");
+
+        /*
         switch(stat) {
             case "comma":
                 throw new IllegalArgumentException("잘못된 입력 : 쉼표가 연속으로 있음");
@@ -108,6 +118,8 @@ class Exceptions {
             default :
                 break;
         }
+        */
+
     }
 }
 
