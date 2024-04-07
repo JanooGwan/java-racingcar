@@ -31,6 +31,17 @@ class GameManager {
         this.playTimes=playTimes;
     }
 
+    public void playGame() {
+        while (playTimes>0) {
+            for(int i=0; i<this.cars.length; i++) {
+                this.cars[i].move();
+                this.cars[i].result_print();
+            }
+
+            System.out.print('\n');
+            --playTimes;
+        }
+    }
 }
 
 
@@ -113,16 +124,6 @@ class Applicaion {
         exceptions.Throw();
 
         int n = Integer.parseInt(str);
-
-        while (n>0) {
-            for(int i=0; i<arr.length; i++) {
-                cars[i].move();
-                cars[i].result_print();
-            }
-
-            System.out.print('\n');
-            n--;
-        }
 
         int max_pos=0;
         for(int i=0; i<arr.length; i++)
