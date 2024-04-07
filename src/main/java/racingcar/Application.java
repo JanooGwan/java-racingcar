@@ -40,7 +40,9 @@ static class Exceptions {
         this.checked_str=str;
     }
 
-
+    public void reload_str(String str) {
+        this.checked_str=str;
+    }
 
 
     public void length() { // 이름 길이 체크, 예외 처리 시 사용
@@ -55,8 +57,8 @@ static class Exceptions {
             this.stat = "comma";
     }
 
-    public void only_num(String str) {
-        String str_filter = str.replaceAll("[\\d]", ""); // 숫자를 제외한 모든 문자 제거
+    public void only_num() {
+        String str_filter = this.checked_str.replaceAll("[\\d]", ""); // 숫자를 제외한 모든 문자 제거
 
         if(!str_filter.isBlank())
             this.stat = "num";
@@ -101,10 +103,10 @@ static class Exceptions {
 
         System.out.println("몇 회 시도하실 건가요?");
         str = Console.readLine();
-        String num_str = str.replaceAll("[\\d]", ""); // 숫자를 제외한 모든 문자 제거
 
-        if(!num_str.isBlank())
-            throw new IllegalArgumentException("잘못된 입력 : 숫자만 입력되어야 함");
+        exceptions.reload_str(str);
+        exceptions.only_num();
+        exceptions.Throw();
 
         int n = Integer.parseInt(str);
 
