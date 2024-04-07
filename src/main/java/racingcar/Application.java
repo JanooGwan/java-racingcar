@@ -31,6 +31,7 @@ public class Application {
     }
 }
 
+<<<<<<< HEAD
 static class Exceptions {
     public String stat;
     public String checked_str;
@@ -49,12 +50,33 @@ static class Exceptions {
     public void length() { // 이름 길이 체크, 예외 처리 시 사용
         String[] arr = checked_str.split(",");
         for (String s : arr) {
+=======
+class Exceptions {
+    public Exceptions(String str) {
+        this.checking_str=str;
+    }
+
+    public Exceptions(String[] str) {
+        this.checking_strs=str;
+    }
+    public String stat;
+    public String checking_str;
+    public String[] checking_strs;
+
+    public void length() { // 이름 길이 체크, 예외 처리 시 사용
+
+        for (String s : this.checking_strs) {
+>>>>>>> 983fa1c0754a5ceefbd6cc7fe4e6606093e47920
             if (s.length() > 5) this.stat = "length";
         }
     }
 
     public void comma() {
+<<<<<<< HEAD
         if (this.checked_str.contains(",,"))
+=======
+        if (this.checking_str.contains(",,"))
+>>>>>>> 983fa1c0754a5ceefbd6cc7fe4e6606093e47920
             this.stat = "comma";
     }
 
@@ -89,6 +111,7 @@ static class Exceptions {
 
         String str = Console.readLine();
 
+<<<<<<< HEAD
         Exceptions exceptions = new Exceptions(str);
 
         exceptions.comma();
@@ -97,6 +120,9 @@ static class Exceptions {
         exceptions.Throw();
 
         String[] arr = str.split(",");
+=======
+        Exceptions exceptions = new Exceptions;
+>>>>>>> 983fa1c0754a5ceefbd6cc7fe4e6606093e47920
 
         Car[] cars = new Car[arr.length];
         for(int i=0; i<arr.length; i++) // 생성된 이름 개수만큼 객체 생성
