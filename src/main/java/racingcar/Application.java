@@ -42,6 +42,14 @@ class GameManager {
             --playTimes;
         }
     }
+
+    public void judgeWinners() {
+
+    }
+
+    public void printWinners() {
+
+    }
 }
 
 
@@ -124,6 +132,8 @@ class Applicaion {
         exceptions.Throw();
 
         int n = Integer.parseInt(str);
+        GameManager GM = new GameManager(cars, n);
+        GM.playGame();
 
         int max_pos=0;
         for(int i=0; i<arr.length; i++)
