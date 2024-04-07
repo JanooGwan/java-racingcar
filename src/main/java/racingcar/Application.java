@@ -64,6 +64,21 @@ class Exceptions {
             this.stat = "num";
     }
 
+    public void Throw() {
+        switch(stat) {
+            case "comma":
+                throw new IllegalArgumentException("잘못된 입력 : 쉼표가 연속으로 있음");
+
+            case "length":
+                throw new IllegalArgumentException("잘못된 입력 : 이름이 5자를 초과하였음");
+
+            case "num":
+                throw new IllegalArgumentException("잘못된 입력 : 숫자만 입력되어야 함");
+
+            default :
+                break;
+        }
+    }
 }
 
 
