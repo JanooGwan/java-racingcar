@@ -27,9 +27,10 @@ class Car {
 
 class carsMaker {
     public Car[] cars;
+
     public carsMaker(String str) {
         final String[] arr;
-        arr= str.split(",");
+        arr = str.split(",");
         cars = new Car[arr.length];
         for (int i = 0; i < arr.length; i++) // 생성된 이름 개수만큼 객체 생성
             cars[i] = new Car(arr[i]);
