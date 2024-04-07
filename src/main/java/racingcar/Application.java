@@ -8,7 +8,7 @@ import java.util.List;
 
 class Car {
     int pos = 0; // 차 위치
-    String stick = "-";
+    private final String stick = "-";
     String name;
 
     public Car(String name) {
@@ -26,9 +26,9 @@ class Car {
 }
 
 class GameManager {
-    Car[] cars;
-    int playTimes;
-    int max_pos = 0;
+    private Car[] cars;
+    private int playTimes;
+    private int max_pos = 0;
     List<String> winners = new ArrayList<String>();
 
     public GameManager(Car[] cars, int playTimes) {
@@ -64,8 +64,8 @@ class GameManager {
 }
 
 class Exceptions {
-    public String stat = "";
-    public String checked_str;
+    private String stat = "";
+    private String checked_str;
 
 
     public Exceptions(String str) {
