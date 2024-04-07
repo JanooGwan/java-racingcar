@@ -29,35 +29,76 @@ public class Application {
             car[i].result_print();
         }
     }
+}
 
-    class Checking_Exception() {
+static class Exceptions {
+    public String stat;
+    public String checked_str;
 
+
+    public Exceptions(String str) {
+        this.checked_str=str;
     }
 
-    public static boolean checking_length(String[] str) { // 이름 길이 체크, 예외 처리 시 사용
-        boolean stat=true;
-        for (String s : str) {
-            if (s.length() > 5) stat = false;
+    public Exceptions(String[] str) {
+        this.checked_strs=str;
+    }
+
+
+
+    public void length() { // 이름 길이 체크, 예외 처리 시 사용
+        String[] arr = checked_str.split(",");
+        for (String s : arr) {
+            if (s.length() > 5) this.stat = "length";
         }
-
-        return stat;
     }
+
+    public void comma() {
+        if (this.checked_str.contains(",,"))
+            this.stat = "comma";
+    }
+
+    public void only_num(String str) {
+        String str_filter = str.replaceAll("[\\d]", ""); // 숫자를 제외한 모든 문자 제거
+
+        if(!str_filter.isBlank())
+            this.stat = "num";
+    }
+
+    public void Throw() {
+        switch(stat) {
+            case "comma":
+                throw new IllegalArgumentException("잘못된 입력 : 쉼표가 연속으로 있음");
+
+            case "length":
+                throw new IllegalArgumentException("잘못된 입력 : 이름이 5자를 초과하였음");
+
+            case "num":
+                throw new IllegalArgumentException("잘못된 입력 : 숫자만 입력되어야 함");
+
+            default :
+                break;
+        }
+    }
+}
+
+
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.");
         System.out.println("이름은 쉼표(,) 기준으로 구분, 5자 이하 입력");
 
         String str = Console.readLine();
 
-        if(str.contains(",,"))
-            throw new IllegalArgumentException("잘못된 입력 : 쉼표가 연속으로 있음");
+        Exceptions exceptions = new Exceptions(str);
+
+        exceptions.comma();
+        exceptions.Throw();
+        exceptions.length();
+        exceptions.Throw();
 
         String[] arr = str.split(",");
 
-        if(!checking_length(arr))
-            throw new IllegalArgumentException("잘못된 입력 : 이름이 5자를 초과하였음");
-
         Car[] cars = new Car[arr.length];
-
         for(int i=0; i<arr.length; i++) // 생성된 이름 개수만큼 객체 생성
             cars[i]=new Car(arr[i]);
 
