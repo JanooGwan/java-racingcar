@@ -25,6 +25,8 @@ class Car {
 class GameManager {
     Car[] cars;
     int playTimes;
+    int max_pos=0;
+    List<String> winners = new ArrayList<String>();
 
     public GameManager(Car[] cars, int playTimes) {
         this.cars=cars;
@@ -44,11 +46,18 @@ class GameManager {
     }
 
     public void judgeWinners() {
+        for(int i=0; i<this.cars.length; i++)
+            if (cars[i].pos>max_pos) max_pos=cars[i].pos;
+
+        for(int i=0; i<this.cars.length; i++)
+            if (cars[i].pos==max_pos) winners.add(cars[i].name); // 최대 위치에 해당하는 차들을 출력
 
     }
 
     public void printWinners() {
-
+        String r_winners = winners.toString();
+        System.out.print("최종 우승자 : " + r_winners.replace("[", "").replace("]", ""));
+        // 우승 자동차 list를 출력할 때 대괄호 제거
     }
 }
 
@@ -65,7 +74,6 @@ class Exceptions {
     public void reload_str(String str) {
         this.checked_str=str;
     }
-
 
     public void length() { // 이름 길이 체크, 예외 처리 시 사용
         String[] arr = checked_str.split(",");
@@ -132,19 +140,12 @@ class Applicaion {
         exceptions.Throw();
 
         int n = Integer.parseInt(str);
+
         GameManager GM = new GameManager(cars, n);
+
         GM.playGame();
+        GM.judgeWinners();
+        GM.printWinners();
 
-        int max_pos=0;
-        for(int i=0; i<arr.length; i++)
-            if (cars[i].pos>max_pos) max_pos=cars[i].pos;
-
-        List<String> winners = new ArrayList<String>();
-        for(int i=0; i<arr.length; i++)
-            if (cars[i].pos==max_pos) winners.add(cars[i].name); // 최대 위치에 해당하는 차들을 출력
-
-        String r_winners = winners.toString();
-        System.out.print("최종 우승자 : " + r_winners.replace("[", "").replace("]", ""));
-        // 우승 자동차 list를 출력할 때 대괄호 제거
     }
 }
