@@ -32,18 +32,16 @@ public class Application {
 }
 
 class Exceptions {
-    public String stat;
-    public String checking_str;
-    public String[] checking_strs;
-
-    public void get_str(String str) {
+    public Exceptions(String str) {
         this.checking_str=str;
     }
 
-    public void get_str(String[] str) {
+    public Exceptions(String[] str) {
         this.checking_strs=str;
     }
-
+    public String stat;
+    public String checking_str;
+    public String[] checking_strs;
 
     public void length() { // 이름 길이 체크, 예외 처리 시 사용
 
@@ -88,6 +86,7 @@ class Exceptions {
 
         String str = Console.readLine();
 
+        Exceptions exceptions = new Exceptions;
 
         Car[] cars = new Car[arr.length];
 
