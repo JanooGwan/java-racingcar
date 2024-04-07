@@ -1,20 +1,23 @@
 package racingcar;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
 class Car {
-    int pos=0; // 차 위치
+    int pos = 0; // 차 위치
     String stick = "-";
     String name;
+
     public Car(String name) {
-        this.name=name;
+        this.name = name;
     }
 
     public void move() { // 차 이동
-        int n= Randoms.pickNumberInRange(0,9);
-        if (n>=4) pos+=1;
+        int n = Randoms.pickNumberInRange(0, 9);
+        if (n >= 4) pos += 1;
     }
 
     public void result_print() { // 차 상태 출력
@@ -25,17 +28,17 @@ class Car {
 class GameManager {
     Car[] cars;
     int playTimes;
-    int max_pos=0;
+    int max_pos = 0;
     List<String> winners = new ArrayList<String>();
 
     public GameManager(Car[] cars, int playTimes) {
-        this.cars=cars;
-        this.playTimes=playTimes;
+        this.cars = cars;
+        this.playTimes = playTimes;
     }
 
     public void playGame() {
-        while (playTimes>0) {
-            for(int i=0; i<this.cars.length; i++) {
+        while (playTimes > 0) {
+            for (int i = 0; i < this.cars.length; i++) {
                 this.cars[i].move();
                 this.cars[i].result_print();
             }
@@ -46,12 +49,11 @@ class GameManager {
     }
 
     public void judgeWinners() {
-        for(int i=0; i<this.cars.length; i++)
-            if (cars[i].pos>max_pos) max_pos=cars[i].pos;
+        for (int i = 0; i < this.cars.length; i++)
+            if (cars[i].pos > max_pos) max_pos = cars[i].pos;
 
-        for(int i=0; i<this.cars.length; i++)
-            if (cars[i].pos==max_pos) winners.add(cars[i].name); // 최대 위치에 해당하는 차들을 출력
-
+        for (int i = 0; i < this.cars.length; i++)
+            if (cars[i].pos == max_pos) winners.add(cars[i].name); // 최대 위치에 해당하는 차들을 출력
     }
 
     public void printWinners() {
@@ -61,18 +63,17 @@ class GameManager {
     }
 }
 
-
 class Exceptions {
-    public String stat="";
+    public String stat = "";
     public String checked_str;
 
 
     public Exceptions(String str) {
-        this.checked_str=str;
+        this.checked_str = str;
     }
 
     public void reload_str(String str) {
-        this.checked_str=str;
+        this.checked_str = str;
     }
 
     public void length() { // 이름 길이 체크, 예외 처리 시 사용
@@ -90,24 +91,23 @@ class Exceptions {
     public void only_num() {
         String str_filter = this.checked_str.replaceAll("[\\d]", ""); // 숫자를 제외한 모든 문자 제거
 
-        if(!str_filter.isBlank())
+        if (!str_filter.isBlank())
             this.stat = "num";
     }
 
     public void Throw() {
-        switch(stat) {
+        switch (stat) {
             case "comma":
                 throw new IllegalArgumentException("잘못된 입력 : 쉼표가 연속으로 있음");
             case "length":
                 throw new IllegalArgumentException("잘못된 입력 : 이름이 5자를 초과하였음");
             case "num":
                 throw new IllegalArgumentException("잘못된 입력 : 숫자만 입력되어야 함");
-            default :
+            default:
                 break;
         }
     }
 }
-
 
 public class Application {
     public static void main(String[] args) {
@@ -126,13 +126,13 @@ public class Application {
         String[] arr = str.split(",");
 
         Car[] cars = new Car[arr.length];
-        for(int i=0; i<arr.length; i++) // 생성된 이름 개수만큼 객체 생성
-            cars[i]=new Car(arr[i]);
+        for (int i = 0; i < arr.length; i++) // 생성된 이름 개수만큼 객체 생성
+            cars[i] = new Car(arr[i]);
 
         System.out.println("몇 회 시도하실 건가요?");
         str = Console.readLine();
 
-        exceptions.reload_str(str);
+        exceptions.reload_str(str); // 예외 검사 문자열 변경
         exceptions.only_num();
         exceptions.Throw();
 
