@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-static class Car {
+class Car {
     int pos=0; // 차 위치
     String stick = "-";
     String name;
@@ -13,7 +13,7 @@ static class Car {
     }
 
     public void move() { // 차 이동
-        int n=Randoms.pickNumberInRange(0,9);
+        int n= Randoms.pickNumberInRange(0,9);
         if (n>=4) pos+=1;
     }
 
@@ -22,16 +22,19 @@ static class Car {
     }
 }
 
-public class Application {
-    public static void moving_car(Car[] car, int n) { // 차 이동&상태 출력
-        for (int i = 0; i < n; i++) {
-            car[i].move();
-            car[i].result_print();
-        }
+class GameManager {
+    Car[] cars;
+    int playTimes;
+
+    public GameManager(Car[] cars, int playTimes) {
+        this.cars=cars;
+        this.playTimes=playTimes;
     }
+
 }
 
-static class Exceptions {
+
+class Exceptions {
     public String stat;
     public String checked_str;
 
@@ -82,6 +85,7 @@ static class Exceptions {
 }
 
 
+class Applicaion {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.");
         System.out.println("이름은 쉼표(,) 기준으로 구분, 5자 이하 입력");
@@ -110,9 +114,12 @@ static class Exceptions {
 
         int n = Integer.parseInt(str);
 
-        while (n>0)
-        {
-            moving_car(cars, arr.length);
+        while (n>0) {
+            for(int i=0; i<arr.length; i++) {
+                cars[i].move();
+                cars[i].result_print();
+            }
+
             System.out.print('\n');
             n--;
         }
