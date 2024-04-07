@@ -34,6 +34,10 @@ class carsMaker {
         for (int i = 0; i < arr.length; i++) // 생성된 이름 개수만큼 객체 생성
             cars[i] = new Car(arr[i]);
     }
+
+    public Car[] showCars() {
+        return cars;
+    }
 }
 
 class GameManager {
@@ -145,7 +149,7 @@ public class Application {
 
         int n = Integer.parseInt(str);
 
-        GameManager GM = new GameManager(cars, n);
+        GameManager GM = new GameManager(cars.showCars(), n);
 
         GM.playGame();
         GM.judgeWinners();
