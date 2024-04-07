@@ -25,6 +25,17 @@ class Car {
     }
 }
 
+class carsMaker {
+    public Car[] cars;
+    public carsMaker(String str) {
+        final String[] arr;
+        arr= str.split(",");
+        cars = new Car[arr.length];
+        for (int i = 0; i < arr.length; i++) // 생성된 이름 개수만큼 객체 생성
+            cars[i] = new Car(arr[i]);
+    }
+}
+
 class GameManager {
     private Car[] cars;
     private int playTimes;
@@ -123,11 +134,7 @@ public class Application {
         exceptions.length();
         exceptions.Throw();
 
-        String[] arr = str.split(",");
-
-        Car[] cars = new Car[arr.length];
-        for (int i = 0; i < arr.length; i++) // 생성된 이름 개수만큼 객체 생성
-            cars[i] = new Car(arr[i]);
+        carsMaker cars = new carsMaker(str);
 
         System.out.println("몇 회 시도하실 건가요?");
         str = Console.readLine();
