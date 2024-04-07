@@ -63,7 +63,7 @@ class GameManager {
 
 
 class Exceptions {
-    public String stat;
+    public String stat="";
     public String checked_str;
 
 
@@ -104,27 +104,11 @@ class Exceptions {
         else if(stat.equals("num"))
             throw new IllegalArgumentException("잘못된 입력 : 숫자만 입력되어야 함");
 
-        /*
-        switch(stat) {
-            case "comma":
-                throw new IllegalArgumentException("잘못된 입력 : 쉼표가 연속으로 있음");
-
-            case "length":
-                throw new IllegalArgumentException("잘못된 입력 : 이름이 5자를 초과하였음");
-
-            case "num":
-                throw new IllegalArgumentException("잘못된 입력 : 숫자만 입력되어야 함");
-
-            default :
-                break;
-        }
-        */
-
     }
 }
 
 
-class Applicaion {
+public class Application {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.");
         System.out.println("이름은 쉼표(,) 기준으로 구분, 5자 이하 입력");
