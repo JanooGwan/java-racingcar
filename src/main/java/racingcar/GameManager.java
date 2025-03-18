@@ -17,6 +17,8 @@ public class GameManager {
     private void raceStart() {
         int cnt = gi.getTryCount();
 
+        System.out.println("\n\n실행 결과");
+
         while(cnt > 0) {
             moveCars();
             printRaceStatus();
@@ -64,6 +66,6 @@ public class GameManager {
 
     private void printWinners() {
         System.out.print('\n');
-        System.out.println("최종 우승자 : " + findWinners());
+        System.out.println("최종 우승자 : " + String.join(", ", findWinners()));
     }
 }
