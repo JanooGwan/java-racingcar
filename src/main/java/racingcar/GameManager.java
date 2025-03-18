@@ -10,5 +10,4 @@ public class GameManager {
         List<Car> cars = ig.getCars();
     }
 
-
 }
