@@ -11,7 +11,7 @@ public class InformationGetter {
         System.out.println("경주할 자동차 이름을 입력하세요.");
         System.out.println("자동차 이름은 쉼표로 구분하여 작성해주세요.");
         System.out.println("ex) pobi,woni,jun");
-        System.out.println("\n입력 : ");
+        System.out.print("\n입력 : ");
 
         return analyzeCarString(sc.nextLine());
     }
@@ -28,7 +28,7 @@ public class InformationGetter {
 
     public int getTryCount() {
         System.out.println("\n시도할 회수는 몇 회인가요?");
-        System.out.println("\n입력 : ");
+        System.out.print("\n입력 : ");
 
         return sc.nextInt();
     }
