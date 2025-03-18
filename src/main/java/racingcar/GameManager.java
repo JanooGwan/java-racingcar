@@ -6,8 +6,12 @@ public class GameManager {
 
     public void startGame() {
         InformationGetter ig = new InformationGetter();
+        GameInformation gi = new GameInformation(ig.getCars(), ig.getTryCount());
 
-        List<Car> cars = ig.getCars();
+        raceStart();
     }
 
+    private void raceStart() {
+
+    }
 }
