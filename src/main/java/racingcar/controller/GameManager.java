@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.GameInformation;
+import racingcar.view.RacePrinter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Random;
 
 public class GameManager {
     GameInformation gi;
+    RacePrinter rp = new RacePrinter();
 
     public void startGame() {
         InformationGetter ig = new InformationGetter();
@@ -23,7 +25,7 @@ public class GameManager {
 
         while(cnt > 0) {
             moveCars();
-            printRaceStatus();
+            rp.printRaceStatus();
             --cnt;
         }
 
@@ -42,13 +44,7 @@ public class GameManager {
         return random.nextInt(10) >= 4;
     }
 
-    private void printRaceStatus() {
-        System.out.print('\n');
 
-        for(var c : gi.getCars()) {
-            System.out.println(c.getName() + " : " + "-".repeat(c.getLocation()));
-        }
-    }
 
     private List<String> findWinners() {
         int max = 0;
