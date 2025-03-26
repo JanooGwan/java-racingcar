@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.Car;
-import racingcar.view.RacePrinter;
+import racingcar.view.AcceptingInputPrinter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,10 @@ import java.util.Scanner;
 
 public class InformationGetter {
     Scanner sc = new Scanner(System.in);
-    RacePrinter rp = new RacePrinter();
+    AcceptingInputPrinter aip = new AcceptingInputPrinter();
 
     public List<Car> getCars() {
-        rp.printCarNameInputs();
+        aip.printCarNameInputs();
         return analyzeCarString(sc.nextLine());
     }
 
@@ -32,7 +32,7 @@ public class InformationGetter {
 
     public int getTryCount() {
         try {
-            rp.printTryCountInputs();
+            aip.printTryCountInputs();
             return sc.nextInt();
         }
 

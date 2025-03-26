@@ -1,15 +1,15 @@
 package racingcar.controller;
 
 import racingcar.model.GameInformation;
-import racingcar.view.RacePrinter;
+import racingcar.view.AcceptingInputPrinter;
+import racingcar.view.ResultPrinter;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class GameManager {
     GameInformation gi;
-    RacePrinter rp = new RacePrinter();
+    AcceptingInputPrinter aip = new AcceptingInputPrinter();
+    ResultPrinter rp = new ResultPrinter();
 
     public void startGame() {
         InformationGetter ig = new InformationGetter();
@@ -25,11 +25,11 @@ public class GameManager {
 
         while(cnt > 0) {
             moveCars();
-            rp.printRaceStatus();
+            rp.printRaceStatus(gi);
             --cnt;
         }
 
-        printWinners();
+        rp.printWinners(gi);
     }
 
     private void moveCars() {
@@ -45,25 +45,4 @@ public class GameManager {
     }
 
 
-
-    private List<String> findWinners() {
-        int max = 0;
-
-        for(var c : gi.getCars()) {
-            max = Math.max(c.getLocation(), max);
-        }
-
-        List<String> winners = new ArrayList<>();
-
-        for(var c : gi.getCars()) {
-            if(c.getLocation() == max) winners.add(c.getName());
-        }
-
-        return winners;
-    }
-
-    private void printWinners() {
-        System.out.print('\n');
-        System.out.println("최종 우승자 : " + String.join(", ", findWinners()));
-    }
 }
