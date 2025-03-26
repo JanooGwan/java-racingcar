@@ -8,7 +8,6 @@ import java.util.Random;
 
 public class GameManager {
     GameInformation gi;
-    AcceptingInputPrinter aip = new AcceptingInputPrinter();
     ResultPrinter rp = new ResultPrinter();
 
     public void startGame() {
