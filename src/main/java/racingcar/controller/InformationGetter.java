@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import racingcar.model.Car;
+import racingcar.view.RacePrinter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +9,10 @@ import java.util.Scanner;
 
 public class InformationGetter {
     Scanner sc = new Scanner(System.in);
+    RacePrinter rp = new RacePrinter();
 
     public List<Car> getCars() {
-        System.out.println("경주할 자동차 이름을 입력하세요.");
-        System.out.println("자동차 이름은 쉼표로 구분하여 작성해주세요.");
-        System.out.println("ex) pobi,woni,jun");
-        System.out.print("입력 : ");
-
+        rp.printCarNameInputs();
         return analyzeCarString(sc.nextLine());
     }
 
@@ -34,9 +32,7 @@ public class InformationGetter {
 
     public int getTryCount() {
         try {
-            System.out.println("\n시도할 회수는 몇 회인가요?");
-            System.out.print("입력 : ");
-
+            rp.printTryCountInputs();
             return sc.nextInt();
         }
 
