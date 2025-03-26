@@ -2,7 +2,7 @@ package racingcar.view;
 
 import racingcar.model.GameInformation;
 
-public class GetInputPrinter {
+public class AcceptingInputPrinter {
     public void printCarNameInputs() {
         System.out.println("경주할 자동차 이름을 입력하세요.");
         System.out.println("자동차 이름은 쉼표로 구분하여 작성해주세요.");
