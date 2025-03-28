@@ -3,6 +3,8 @@ package racingcar.controller;
 import racingcar.model.GameInformation;
 import racingcar.view.ResultPrinter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GameManager {
@@ -27,7 +29,23 @@ public class GameManager {
             --cnt;
         }
 
-        resultPrinter.printWinners(gameInfo);
+        resultPrinter.printWinners(findWinners(gameInfo));
+    }
+
+    private List<String> findWinners(GameInformation gi) {
+        int max = 0;
+
+        for(var c : gi.getCars()) {
+            max = Math.max(c.getLocation(), max);
+        }
+
+        List<String> winners = new ArrayList<>();
+
+        for(var c : gi.getCars()) {
+            if(c.getLocation() == max) winners.add(c.getName());
+        }
+
+        return winners;
     }
 
     private void moveCars() {

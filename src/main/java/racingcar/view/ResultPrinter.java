@@ -14,24 +14,8 @@ public class ResultPrinter {
         }
     }
 
-    private List<String> findWinners(GameInformation gi) {
-        int max = 0;
-
-        for(var c : gi.getCars()) {
-            max = Math.max(c.getLocation(), max);
-        }
-
-        List<String> winners = new ArrayList<>();
-
-        for(var c : gi.getCars()) {
-            if(c.getLocation() == max) winners.add(c.getName());
-        }
-
-        return winners;
-    }
-
-    public void printWinners(GameInformation gi) {
+    public void printWinners(List<String> winners) {
         System.out.print('\n');
-        System.out.println("최종 우승자 : " + String.join(", ", findWinners(gi)));
+        System.out.println("최종 우승자 : " + String.join(", ", winners));
     }
 }
