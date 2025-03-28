@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+
 public class GameManager {
     GameInformation gameInfo;
     ResultPrinter resultPrinter = new ResultPrinter();
+
+    private final static int MIN_MOVE_CONDITION = 4;
 
     public void startGame() {
         InformationGetter ig = new InformationGetter();
@@ -57,8 +60,6 @@ public class GameManager {
     private boolean judgeMovingCar() {
         Random random = new Random();
 
-        return random.nextInt(10) >= 4;
+        return random.nextInt(10) >= MIN_MOVE_CONDITION;
     }
-
-
 }
