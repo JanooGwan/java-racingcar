@@ -9,10 +9,10 @@ import java.util.Scanner;
 
 public class InformationGetter {
     Scanner sc = new Scanner(System.in);
-    AcceptingInputPrinter aip = new AcceptingInputPrinter();
+    AcceptingInputPrinter inputPrinter = new AcceptingInputPrinter();
 
     public List<Car> getCars() {
-        aip.printCarNameInputs();
+        inputPrinter.printCarNameInputs();
         return analyzeCarString(sc.nextLine());
     }
 
@@ -32,7 +32,7 @@ public class InformationGetter {
 
     public int getTryCount() {
         try {
-            aip.printTryCountInputs();
+            inputPrinter.printTryCountInputs();
             return sc.nextInt();
         }
 
