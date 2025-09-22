@@ -1,9 +1,12 @@
 package racingcar.controller;
 
 import racingcar.controller.dto.RacerInfo;
-import racingcar.controller.util.StringUtils;
+import racingcar.util.StringUtils;
+import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+
+import java.util.List;
 
 
 public class RacingController {
@@ -19,15 +22,21 @@ public class RacingController {
     public RacerInfo getInfosBeforeRaceStart() {
         outputView.getCars();
         String racerStr = inputView.getStringInput();
-        List
+        List<Car> cars = StringUtils.makeCarsUsingString(racerStr);
 
         outputView.getTryCount();
         int tryCnt = inputView.getNumInput();
 
-        return new RacerInfo(, tryCnt);
+        return new RacerInfo(cars, tryCnt);
     }
 
     public void raceStart(RacerInfo racerInfo) {
+        for(int i = 0; i < racerInfo.gameCount(); ++i) {
+            for(var c : racerInfo.cars()) {
+                c.move();
+            }
 
+            outputView.
+        }
     }
 }
