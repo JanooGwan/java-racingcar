@@ -1,23 +1,25 @@
 package racingcar.controller;
 
 import racingcar.controller.dto.RaceInfo;
+import racingcar.util.RaceManager;
 import racingcar.util.StringUtils;
 import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class RacingController {
     private final InputView inputView;
     private final OutputView outputView;
+    private final RaceManager raceManager;
 
 
-    public RacingController(InputView inputView, OutputView outputView) {
-        this.inputView = inputView;
-        this.outputView = outputView;
+    public RacingController() {
+        this.inputView =  new InputView();
+        this.outputView = new OutputView();
+        this.raceManager = new RaceManager();
     }
 
     public RaceInfo getInfosBeforeRaceStart() {
@@ -37,9 +39,7 @@ public class RacingController {
         outputView.printRaceStart();
 
         for(int i = 0; i < raceInfo.gameCount(); ++i) {
-            for(var c : cars) {
-                c.move();
-            }
+            raceManager.movingCars(cars);
             outputView.printRaceStatus(cars);
         }
 
@@ -47,8 +47,7 @@ public class RacingController {
     }
 
     private void finishRace(List<Car> cars) {
-
-
+        List<String> winners = raceManager.findWinners(cars);
         outputView.printRaceFinalStatus(winners);
     }
 }

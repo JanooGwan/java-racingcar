@@ -22,5 +22,7 @@ public class RaceManager {
             if(maxLocation == c.getLocation())
                 winners.add(c.getName());
         }
+
+        return winners;
     }
 }
