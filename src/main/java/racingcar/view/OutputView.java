@@ -14,8 +14,11 @@ public class OutputView {
         System.out.println("시도할 회수는 몇회인가요?");
     }
 
+    public void printRaceStart() {
+        System.out.println("\n실행 결과");
+    }
+
     public void printRaceStatus(List<Car> cars) {
-        System.out.println("실행 결과");
         for(var c : cars) {
             System.out.println(c.getName() + " : " + StringUtils.NumToSticks(c.getLocation()));
         }

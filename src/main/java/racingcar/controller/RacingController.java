@@ -34,6 +34,8 @@ public class RacingController {
     public void raceStart(RaceInfo raceInfo) {
         List<Car> cars = raceInfo.cars();
 
+        outputView.printRaceStart();
+
         for(int i = 0; i < raceInfo.gameCount(); ++i) {
             for(var c : cars) {
                 c.move();
@@ -45,17 +47,7 @@ public class RacingController {
     }
 
     private void finishRace(List<Car> cars) {
-        int maxLocation = 0;
 
-        for(var c : cars) {
-            if(maxLocation < c.getLocation()) maxLocation = c.getLocation();
-        }
-
-        List<String> winners = new ArrayList<>();
-        for(var c : cars) {
-            if(maxLocation == c.getLocation())
-                winners.add(c.getName());
-        }
 
         outputView.printRaceFinalStatus(winners);
     }
