@@ -1,10 +1,8 @@
 package racingcar.model;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Car {
+    private static final int CAN_MOVE_STANDARD = 4;
+
     int location;
     String name;
 
@@ -14,12 +12,12 @@ public class Car {
         this.location = 0;
     }
 
-    public void moveForward() {
+    public void move() {
         if(isAbleToMove()) ++location;
     }
 
     private boolean isAbleToMove() {
-        return (int)(Math.random() * 10) >= 4;
+        return (int)(Math.random() * 10) >= CAN_MOVE_STANDARD;
     }
 
     public int getLocation() {
