@@ -5,7 +5,7 @@ import racingcar.model.Car;
 import java.util.List;
 
 
-public record RacerInfo(
+public record RaceInfo(
         List<Car> cars,
         int gameCount
 ) {

@@ -1,11 +1,12 @@
 package racingcar.controller;
 
-import racingcar.controller.dto.RacerInfo;
+import racingcar.controller.dto.RaceInfo;
 import racingcar.util.StringUtils;
 import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,7 +20,7 @@ public class RacingController {
         this.outputView = outputView;
     }
 
-    public RacerInfo getInfosBeforeRaceStart() {
+    public RaceInfo getInfosBeforeRaceStart() {
         outputView.getCars();
         String racerStr = inputView.getStringInput();
         List<Car> cars = StringUtils.makeCarsUsingString(racerStr);
@@ -27,16 +28,35 @@ public class RacingController {
         outputView.getTryCount();
         int tryCnt = inputView.getNumInput();
 
-        return new RacerInfo(cars, tryCnt);
+        return new RaceInfo(cars, tryCnt);
     }
 
-    public void raceStart(RacerInfo racerInfo) {
-        for(int i = 0; i < racerInfo.gameCount(); ++i) {
-            for(var c : racerInfo.cars()) {
+    public void raceStart(RaceInfo raceInfo) {
+        List<Car> cars = raceInfo.cars();
+
+        for(int i = 0; i < raceInfo.gameCount(); ++i) {
+            for(var c : cars) {
                 c.move();
             }
-
-            outputView.
+            outputView.printRaceStatus(cars);
         }
+
+        finishRace(cars);
+    }
+
+    private void finishRace(List<Car> cars) {
+        int maxLocation = 0;
+
+        for(var c : cars) {
+            if(maxLocation < c.getLocation()) maxLocation = c.getLocation();
+        }
+
+        List<String> winners = new ArrayList<>();
+        for(var c : cars) {
+            if(maxLocation == c.getLocation())
+                winners.add(c.getName());
+        }
+
+        outputView.printRaceFinalStatus(winners);
     }
 }
