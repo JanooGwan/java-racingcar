@@ -1,6 +1,8 @@
 package racingcar.controller;
 
 import racingcar.controller.dto.RaceInfo;
+import racingcar.util.CheckCarName;
+import racingcar.util.CheckTryCount;
 import racingcar.util.RaceManager;
 import racingcar.util.StringUtils;
 import racingcar.model.Car;
@@ -26,9 +28,11 @@ public class RacingController {
         outputView.getCars();
         String racerStr = inputView.getStringInput();
         List<Car> cars = StringUtils.makeCarsUsingString(racerStr);
+        for(var c : cars) CheckCarName.checkName(c.getName());
 
         outputView.getTryCount();
         int tryCnt = inputView.getNumInput();
+        CheckTryCount.isPositive(tryCnt);
 
         return new RaceInfo(cars, tryCnt);
     }
