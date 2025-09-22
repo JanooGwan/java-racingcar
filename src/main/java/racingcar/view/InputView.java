@@ -3,13 +3,13 @@ package racingcar.view;
 import java.util.Scanner;
 
 public class InputView {
-    public void getStringInput() {
+    public String getStringInput() {
         Scanner sc = new Scanner(System.in);
-        sc.nextLine();
+        return sc.nextLine();
     }
 
-    public void getNumInput() {
+    public int getNumInput() {
         Scanner sc = new Scanner(System.in);
-        sc.nextInt();
+        return sc.nextInt();
     }
 }
