@@ -19,3 +19,4 @@
   - 입력 텍스트 그대로(poni,woni,jun)를 DTO에 넣기
   - 이름을 분리하여 List<String>에 넣기
   - 이름을 분리한 것을 바탕으로 Car 객체들로 변환하고, List<Cars>에 넣기
+- 입력 텍스트

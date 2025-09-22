@@ -1,7 +1,10 @@
 package racingcar.controller;
 
+import racingcar.controller.dto.RacerInfo;
+import racingcar.controller.util.StringUtils;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+
 
 public class RacingController {
     private final InputView inputView;
@@ -13,10 +16,18 @@ public class RacingController {
         this.outputView = outputView;
     }
 
-    public void getInfosBeforeRaceStart() {
+    public RacerInfo getInfosBeforeRaceStart() {
         outputView.getCars();
-        inputView.getStringInput();
+        String racerStr = inputView.getStringInput();
+        List
+
+        outputView.getTryCount();
+        int tryCnt = inputView.getNumInput();
+
+        return new RacerInfo(, tryCnt);
     }
 
+    public void raceStart(RacerInfo racerInfo) {
 
+    }
 }

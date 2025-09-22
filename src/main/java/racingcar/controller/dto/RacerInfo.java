@@ -4,8 +4,9 @@ import racingcar.model.Car;
 
 import java.util.List;
 
-public record RaceStatusOutputDto(
-        List<Car> cars
-)
-{
+
+public record RacerInfo(
+        List<Car> cars,
+        int gameCount
+) {
 }
