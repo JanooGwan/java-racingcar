@@ -1,7 +1,6 @@
 package racingcar.controller;
 
 import racingcar.controller.dto.RaceInfo;
-import racingcar.util.CheckCarName;
 import racingcar.util.TryCountValidator;
 import racingcar.util.RaceManager;
 import racingcar.util.StringUtils;
