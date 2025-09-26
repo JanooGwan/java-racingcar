@@ -16,7 +16,7 @@ public class RacingController {
     private final RaceManager raceManager;
 
     public RacingController() {
-        this.inputView =  new InputView();
+        this.inputView = new InputView();
         this.outputView = new OutputView();
         this.raceManager = new RaceManager();
     }
@@ -25,7 +25,6 @@ public class RacingController {
         outputView.getCars();
         String racerStr = inputView.getStringInput();
         List<Car> cars = StringUtils.makeCarsUsingString(racerStr);
-        for(var c : cars) CheckCarName.checkName(c.getName());
 
         outputView.getTryCount();
         int tryCnt = inputView.getNumInput();

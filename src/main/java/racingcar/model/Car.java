@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.util.CheckCarName;
+
 public class Car {
     private static final int CAN_MOVE_STANDARD = 4;
 
@@ -8,6 +10,7 @@ public class Car {
 
 
     public Car(String name) {
+        CheckCarName.checkName(name);
         this.name = name;
         this.location = 0;
     }
