@@ -11,17 +11,9 @@ public class RaceManager {
     }
 
     public List<String> findWinners(List<Car> cars) {
-        int maxLocation = 0;
+        int maxLocation = cars.stream().mapToInt(Car::getLocation).max().orElse(0);
 
-        for(var c : cars) {
-            if(maxLocation < c.getLocation()) maxLocation = c.getLocation();
-        }
-
-        List<String> winners = new ArrayList<>();
-        for(var c : cars) {
-            if(maxLocation == c.getLocation())
-                winners.add(c.getName());
-        }
+        List<String> winners = cars.stream().filter(c -> c.getLocation() == maxLocation).map(Car::getName).toList();
 
         return winners;
     }
