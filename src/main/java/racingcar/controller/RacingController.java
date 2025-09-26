@@ -8,15 +8,12 @@ import racingcar.util.StringUtils;
 import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
-
 import java.util.List;
-
 
 public class RacingController {
     private final InputView inputView;
     private final OutputView outputView;
     private final RaceManager raceManager;
-
 
     public RacingController() {
         this.inputView =  new InputView();
