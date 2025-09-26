@@ -5,8 +5,8 @@ import racingcar.util.CheckCarName;
 public class Car {
     private static final int CAN_MOVE_STANDARD = 4;
 
-    int location;
-    String name;
+    private int location;
+    private String name;
 
 
     public Car(String name) {
