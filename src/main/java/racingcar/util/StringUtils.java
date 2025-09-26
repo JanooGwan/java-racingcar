@@ -3,6 +3,7 @@ package racingcar.util;
 import racingcar.model.Car;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class StringUtils {
@@ -15,13 +16,6 @@ public class StringUtils {
     }
 
     public static List<Car> makeCarsUsingString(String str) {
-        String[] strs = StringUtils.splitByComma(str);
-        List<Car> cars = new ArrayList<>();
-
-        for (var c : strs) {
-            cars.add(new Car(c));
-        }
-
-        return cars;
+        return Arrays.stream(StringUtils.splitByComma(str)).map(Car::new).toList();
     }
 }
