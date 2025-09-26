@@ -14,10 +14,10 @@ public class RacingController {
     private final OutputView outputView;
     private final RaceManager raceManager;
 
-    public RacingController() {
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
-        this.raceManager = new RaceManager();
+    public RacingController(InputView inputView, OutputView outputView, RaceManager raceManager) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.raceManager = raceManager;
     }
 
     public RaceInfo getInfosBeforeRaceStart() {
