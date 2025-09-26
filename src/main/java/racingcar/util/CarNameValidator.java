@@ -1,6 +1,6 @@
 package racingcar.util;
 
-public class CheckCarName {
+public class CarNameValidator {
     private static final int NAME_MAX_LENGTH = 5;
 
     public static void isNull(String name) {
