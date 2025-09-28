@@ -9,7 +9,6 @@ import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingController {
@@ -31,7 +30,9 @@ public class RacingController {
         int tryCnt = inputView.getNumInput();
         TryCountValidator.isPositive(tryCnt);
 
-        List<String> carNames = StringUtils.splitByComma(racerStr);
+        RaceInfoRequest raceInfoInput = new RaceInfoRequest(racerStr, tryCnt);
+
+        List<String> carNames = StringUtils.splitByComma(raceInfoInput.carNames());
 
         return new RaceInfoResponse(carNames, tryCnt);
     }
