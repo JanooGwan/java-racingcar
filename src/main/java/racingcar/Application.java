@@ -1,7 +1,6 @@
 package racingcar;
 
 import racingcar.controller.RacingController;
-import racingcar.controller.dto.RaceInfo;
 import racingcar.util.RaceManager;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;

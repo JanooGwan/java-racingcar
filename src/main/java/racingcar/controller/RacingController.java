@@ -1,6 +1,7 @@
 package racingcar.controller;
 
-import racingcar.controller.dto.RaceInfo;
+import racingcar.controller.dto.RaceInfoRequest;
+import racingcar.controller.dto.RaceInfoResponse;
 import racingcar.util.TryCountValidator;
 import racingcar.util.RaceManager;
 import racingcar.util.StringUtils;
@@ -20,8 +21,9 @@ public class RacingController {
         this.raceManager = raceManager;
     }
 
-    public RaceInfo getInfosBeforeRaceStart() {
+    public RaceInfoResponse getInfosBeforeRaceStart() {
         outputView.getCars();
+
         String racerStr = inputView.getStringInput();
         List<Car> cars = StringUtils.makeCarsUsingString(racerStr);
 
@@ -29,11 +31,11 @@ public class RacingController {
         int tryCnt = inputView.getNumInput();
         TryCountValidator.isPositive(tryCnt);
 
-        return new RaceInfo(cars, tryCnt);
+        return new RaceInfoResponse(cars, tryCnt);
     }
 
-    public void raceStart(RaceInfo raceInfo) {
-        List<Car> cars = raceInfo.cars();
+    public void raceStart(RaceInfoResponse raceInfo) {
+        List<Car> cars = StringUtils.makeCarsUsingString(raceInfo.carNames());
 
         outputView.printRaceStart();
 
