@@ -8,6 +8,8 @@ import racingcar.util.StringUtils;
 import racingcar.model.Car;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingController {
@@ -23,19 +25,20 @@ public class RacingController {
 
     public RaceInfoResponse getInfosBeforeRaceStart() {
         outputView.getCars();
-
         String racerStr = inputView.getStringInput();
-        List<Car> cars = StringUtils.makeCarsUsingString(racerStr);
 
         outputView.getTryCount();
         int tryCnt = inputView.getNumInput();
         TryCountValidator.isPositive(tryCnt);
 
-        return new RaceInfoResponse(cars, tryCnt);
+        List<String> carNames = StringUtils.splitByComma(racerStr);
+
+        return new RaceInfoResponse(carNames, tryCnt);
     }
 
     public void raceStart(RaceInfoResponse raceInfo) {
-        List<Car> cars = StringUtils.makeCarsUsingString(raceInfo.carNames());
+        List<Car> cars = raceInfo.carNames().stream()
+                        .map(Car::new).toList();
 
         outputView.printRaceStart();
 
