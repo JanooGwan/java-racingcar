@@ -14,7 +14,7 @@ public class StringUtils {
         return "-".repeat(count);
     }
 
-    public static Car makeCarUsingString(String str) {
-        return new Car(str);
+    public static List<Car> makeCarUsingStrings(List<String> strs) {
+        return strs.stream().map(Car::new).toList();
     }
 }
