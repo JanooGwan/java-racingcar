@@ -38,8 +38,7 @@ public class RacingController {
     }
 
     public void raceStart(RaceInfoResponse raceInfo) {
-        List<Car> cars = raceInfo.carNames().stream()
-                        .map(Car::new).toList();
+        List<Car> cars = StringUtils.makeCarUsingStrings(raceInfo.carNames());
 
         outputView.printRaceStart();
 
