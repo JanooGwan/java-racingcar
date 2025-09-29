@@ -38,7 +38,7 @@ public class RacingController {
     }
 
     public void raceStart(RaceInfoResponse raceInfo) {
-        List<Car> cars = StringUtils.makeCarUsingStrings(raceInfo.carNames());
+        List<Car> cars = StringUtils.makeCarsUsingStrings(raceInfo.carNames());
 
         outputView.printRaceStart();
 
