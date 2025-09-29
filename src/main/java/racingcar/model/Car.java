@@ -8,7 +8,6 @@ public class Car {
     private int location;
     private String name;
 
-
     public Car(String name) {
         CarNameValidator.checkName(name);
         this.name = name;
