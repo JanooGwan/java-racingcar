@@ -27,14 +27,15 @@ public class RacingController {
         String racerStr = inputView.getStringInput();
 
         outputView.getTryCount();
-        int tryCnt = inputView.getNumInput();
-        TryCountValidator.isPositive(tryCnt);
+        String tryCnt = inputView.getStringInput();
+        TryCountValidator.checkTryCount(tryCnt);
+        int tryCount = Integer.parseInt(tryCnt);
 
-        RaceInfoRequest raceInfoInput = new RaceInfoRequest(racerStr, tryCnt);
+        RaceInfoRequest raceInfoInput = new RaceInfoRequest(racerStr, tryCount);
 
         List<String> carNames = StringUtils.splitByComma(raceInfoInput.carNames());
 
-        return new RaceInfoResponse(carNames, tryCnt);
+        return new RaceInfoResponse(carNames, tryCount);
     }
 
     public void raceStart(RaceInfoResponse raceInfo) {

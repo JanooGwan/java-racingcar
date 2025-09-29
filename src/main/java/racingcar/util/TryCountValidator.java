@@ -13,4 +13,9 @@ public class TryCountValidator {
         if(tryCnt < 0)
             throw new IllegalArgumentException("시도 횟수는 자연수여야 합니다.");
     }
+
+    public static void checkTryCount(String tryCnt) {
+        isNumber(tryCnt);
+        isPositive(Integer.parseInt(tryCnt));
+    }
 }
